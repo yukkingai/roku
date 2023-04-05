@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Vujahday+Script&display=swap');
+
+.logo {
+    width: 30%;
+}
+
+.head {
+    padding: 15px 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+
+.nav {
+    display: flex;
+    top: 10%;
+    left: 90%; 
+    flex-direction: row;
+    justify-content: space-between;
+}    
+
+nav ul li {
+    margin: 5px;
+}
+
+.nav-mobile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 30px;
+}
+
+.hp-logo {
+    margin-top: 100px;
+    padding: 100px;
+}
+
+.logout {
+    text-decoration: none;
+    font-size: 1.2em;
+    color: #29aae1;
+}
+
+.fa-user-circle,
+.fa-cog,
+.fa-power-off {
+    margin-right: 10px;
+    font-size: 1.8em;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.nav-login {
+    display: flex;
+    justify-content: right;
+    margin: 30px;
+  }
+
+

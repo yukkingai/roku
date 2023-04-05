@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Vujahday+Script&display=swap');
+@supports (grid-area: auto) {
+
+	/*------------ Start Mobile ------------*/
+    @media screen and (max-width: 798px) {
+    .site {
+		max-width: 799px;
+	}
+
+    .mobile {
+        display: grid;
+    }
+
+    .tablet {
+        display: grid;
+    }
+	
+    .full {
+        display: none;
+    }
+	/*------------ Mobile Grid Items ------------*/
+
+	.one-item {
+		display: grid;
+		grid-column: 1 / span 2;
+		grid-template-columns: 1fr;
+	}
+
+    .two-items {
+		display: grid;
+		grid-column: 1 / span 2;
+		grid-template-columns: repeat(2, 1fr);
+		justify-content: space-evenly;
+		row-gap: 2em;
+		column-gap: 2em;
+	}
+
+    .three-items {
+		display: grid;
+		grid-column: 1 / span 2;
+		grid-template-columns: repeat(3, 1fr);
+		justify-content: space-evenly;
+		row-gap: 2em;
+		column-gap: 2em;
+	}
+
+    .s-one-item { /*over ride for mobile to 1 item/ the right size*/
+        display: grid;
+        grid-column: 2 / span 2;
+        grid-template-columns: 1fr !important;
+      }
+
+}
+
+/*----------------- Tablet --------------------*/
+
+    @media screen and (min-width: 800px) and (max-width: 1023px) {
+        /*-- Tablet Fixes --*/
+        .site {
+            max-width: 1023px;
+        }
+
+        .mobile {
+            display: grid;
+        }
+
+        .tablet {
+            display: grid;
+        }
+
+        .full {
+            display: none;
+        }
+
+
+    }
+
+    /*----------------- Desktop --------------------*/
+
+    @media screen and (min-width: 1024px) {
+
+        .site {
+            max-width: none;
+        }
+
+        .mobile {
+            display: none;
+        }
+
+        .tablet {
+            display: none;
+        }
+        
+        .full {
+            display: grid;
+        }
+
+        .one-item {
+            display: grid;
+            grid-column: 2 / span 2;
+            grid-template-columns: 1fr;
+        }
+
+        .two-items {
+          display: grid;
+          grid-column: 1 / span 2;
+          grid-template-columns: repeat(2, 1fr);
+          justify-content: space-evenly;
+          row-gap: 2em;
+          column-gap: 2em;
+        }
+
+        .three-items {
+            display: grid;
+            grid-column: 2 / span 2;
+            grid-template-columns: repeat(3, 1fr);
+            justify-content: space-evenly;
+            row-gap: 2em;
+            column-gap: 2em;
+        }
+
+    
+
+    .logo {
+        width: 20% !important;
+    }
+    
+
+
+
+    
+    }
+}
