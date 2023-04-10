@@ -10,37 +10,142 @@ export default {
         <div>
             <div class="video-player">
 
-                <video controls :src="kidsTrailerUrl" type="video/mp4" ref="KidsVideoPlayer" poster="/images/thumb-kids.jpg">
+                <video :src="kidsTrailerUrl" type="video/mp4" ref="KidsVideoPlayer" poster="/images/thumb-kids.jpg">
                 </video>
-
-                <img @click="toggleLike" class="like" src="liked ? filledHeartImage : emptyHeartImage" v-if="!kidsPlayVideo">
+                <img @click="toggleLike" class="like big-like" :src="emptyHeartImage" v-if="!kidsPlayVideo">
                 <div class="video-summary" v-if="!kidsPlayVideo">
-                    <h2>{{ movieTitle }}</h2>
-                    <p>{{ summary }}</p>
-                    <button @click="kidsPlayTrailer()">Play Trailer</button>
-                    <p>PG<br>
-                    1 hours 21 minutes<br>
-                    Animation ‧ Adventure ‧ Comedy
-                    </p>
+                    <div class="heading">
+                        <div class="play"><img src="/images/play-btn.png"></div>
+                        <h2>{{ movieTitle }}</h2>
+                    </div>
+                    <div class="sum">
+                        <p>{{ summary }}</p>
+                        <button @click="kidsPlayTrailer()">Play Trailer</button>
+                        <p>PG<br>
+                        1 hours 21 minutes<br>
+                        Animation ‧ Adventure ‧ Comedy
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
 
-
         <h2 class="movies-title">Year 1990s ></h2>
-        <div class="movies movies-90"></div>
+        <div class="movies-container">
+            <div class="arrow left"></div>
+            <div class="movies" v-for="movie in movies90">
+                    <li>
+                        <div class="frame"><img :src="movie.image">
+                            <div class="caption">
+                                <h2>{{movie.title}}</h2><br><br>
+                            <div class="desc">
+                                <img class="play" src="/images/play-btn.png">
+                                <img @click="toggleLike" class="like" :src="emptyHeartImage">
+                                <h3>U<br>
+                                1 hours 24 minutes<br>
+                                Animation ‧ Family ‧ Fantasy
+                                </h3>
+                            </div>
+                            </div>
+                        </div>
+                    </li>
+            </div>
+            <div class="arrow right"></div>
+        </div>
+        
 
         <h2 class="movies-title">Year 1980s ></h2>
-        <div class="movies movies-80"></div>
+        <div class="movies-container">
+            <div class="arrow left"></div>
+            <div class="movies" v-for="movie in movies80">
+                    <li>
+                        <div class="frame"><img :src="movie.image">
+                            <div class="caption">
+                                <h2>{{movie.title}}</h2><br><br>
+                            <div class="desc">
+                                <img class="play" src="/images/play-btn.png">
+                                <img @click="toggleLike" class="like" :src="emptyHeartImage">
+                                <h3>U<br>
+                                1 hours 24 minutes<br>
+                                Animation ‧ Family ‧ Fantasy
+                                </h3>
+                            </div>
+                            </div>
+                        </div>
+                    </li>
+            </div>
+            <div class="arrow right"></div>
+        </div>
+
 
         <h2 class="movies-title">Year 1970s ></h2>
-        <div class="movies movies-70"></div>
+        <div class="movies-container">
+        <div class="arrow left"></div>
+        <div class="movies" v-for="movie in movies70">
+                <li>
+                    <div class="frame"><img :src="movie.image">
+                        <div class="caption">
+                            <h2>{{movie.title}}</h2><br><br>
+                        <div class="desc">
+                            <img class="play" src="/images/play-btn.png">
+                            <img @click="toggleLike" class="like" :src="emptyHeartImage">
+                            <h3>U<br>
+                            1 hours 24 minutes<br>
+                            Animation ‧ Family ‧ Fantasy
+                            </h3>
+                        </div>
+                        </div>
+                    </div>
+                </li>
+        </div>
+        <div class="arrow right"></div>
+        </div>
 
         <h2 class="movies-title">Year 1960s ></h2>
-        <div class="movies movies-60"></div>
+        <div class="movies-container">
+        <div class="arrow left"></div>
+        <div class="movies" v-for="movie in movies60">
+                <li>
+                    <div class="frame"><img :src="movie.image">
+                        <div class="caption">
+                            <h2>{{movie.title}}</h2><br><br>
+                        <div class="desc">
+                            <img class="play" src="/images/play-btn.png">
+                            <img @click="toggleLike" class="like" :src="emptyHeartImage">
+                            <h3>U<br>
+                            1 hours 24 minutes<br>
+                            Animation ‧ Family ‧ Fantasy
+                            </h3>
+                        </div>
+                        </div>
+                    </div>
+                </li>
+        </div>
+        <div class="arrow right"></div>
+        </div>
 
         <h2 class="movies-title">Year 1950s ></h2>
-        <div class="movies movies-50"></div>
+        <div class="movies-container">
+        <div class="arrow left"></div>
+        <div class="movies" v-for="movie in movies50">
+                <li>
+                    <div class="frame"><img :src="movie.image">
+                        <div class="caption">
+                            <h2>{{movie.title}}</h2><br><br>
+                        <div class="desc">
+                            <img class="play" src="/images/play-btn.png">
+                            <img @click="toggleLike" class="like" :src="emptyHeartImage">
+                            <h3>U<br>
+                            1 hours 24 minutes<br>
+                            Animation ‧ Family ‧ Fantasy
+                            </h3>
+                        </div>
+                        </div>
+                    </div>
+                </li>
+        </div>
+        <div class="arrow right"></div>
+        </div>
 
     </div>
     `,
@@ -51,42 +156,50 @@ export default {
 
         
         const urls = [
-            'https://imdb-api.com/API/AdvancedSearch/k_60b722uh?release_date=1990-01-01,1999-01-01&certificates=us:G&languages=en',
-            'https://imdb-api.com/API/AdvancedSearch/k_60b722uh?release_date=1980-01-01,1989-01-01&certificates=us:G&languages=en'
+            // 'https://imdb-api.com/API/AdvancedSearch/k_60b722uh?release_date=1990-01-01,1999-01-01&certificates=us:G&languages=en',
+            // 'https://imdb-api.com/API/AdvancedSearch/k_60b722uh?release_date=1980-01-01,1989-01-01&certificates=us:G&languages=en',
+            // 'https://imdb-api.com/API/AdvancedSearch/k_60b722uh?release_date=1970-01-01,1979-01-01&certificates=us:G&languages=en',
+            // 'https://imdb-api.com/API/AdvancedSearch/k_60b722uh?release_date=1960-01-01,1969-01-01&certificates=us:G&languages=en',
+            'https://imdb-api.com/API/AdvancedSearch/k_60b722uh?release_date=1950-01-01,1959-01-01&certificates=us:G&languages=en'
          ];
  
-         const requests = urls.map(url => fetch(url));
+        const requests = urls.map(url => fetch(url));
 
             Promise.all(requests)
             .then(responses => {
-                responses.forEach(response => {
-                response.json()
+                
+                responses[0].json()
                     .then(data => {
-                    console.log(`Data from ${response.url}:`);
-                    console.log(data.results.slice(0, 5));
-
-                    data.results.slice(0, 5).forEach((data, index => {
-                        
-                        let name = data.title,
-                            img = data.image,
-                            movie = `<li><div class="frame"><img src="${img}"><h2 class="caption">${name}</h2></div></li>`;
-                            
-                        if (index === 0) {
-                            document.querySelector('.movies-90').innerHTML += movie;
-                        } else if (index === 1) {
-                            document.querySelector('.movies-80').innerHTML += movie;
-                        } 
-                        // else if (index === 2) {
-                        //     document.querySelector('.movies-70').innerHTML += movie;
-                        // } else if (index === 3) {
-                        //     document.querySelector('.movies-60').innerHTML += movie;
-                        // } else if (index === 4) {
-                        //     document.querySelector('.movies-50').innerHTML += movie;
-                        // }
-                    }))
+                    console.log(data.results);
+                    this.movies90 = data.results;
                 })
+
+                responses[1].json()
+                    .then(data => {
+                    console.log(data.results);
+                    this.movies80 = data.results;
+                })
+
+                responses[2].json()
+                .then(data => {
+                console.log(data.results);
+                this.movies70 = data.results;
+                })
+
+                responses[3].json()
+                .then(data => {
+                console.log(data.results);
+                this.movies60 = data.results;
+                })
+
+                responses[4].json()
+                .then(data => {
+                console.log(data.results);
+                this.movies50 = data.results;
+                })
+
                  .catch(error => console.log(error));
-             });
+             
            })
            .catch(error => console.log(error));
      },
@@ -97,10 +210,14 @@ export default {
            movieTitle: 'Toys Story',
            summary: 'When Andy’s family moves to a new house, Woody and Buzz must escape the clutches of maladjusted neighbor Sid Phillips and reunite with their boy. Toy Story is about the ‘secret life of toys’ when people are not around…',
            kidsPlayVideo: false,
+           liked: false,
            emptyHeartImage: '/images/heart.svg',
            filledHeartImage: '/images/heart-filled.png',
-           liked: false
- 
+           movies90: [],
+           movies80: [],
+           movies70: [],
+           movies60: [],
+           movies50: []
          };
      },
  
@@ -110,10 +227,16 @@ export default {
            this.$refs.KidsVideoPlayer.play();
          },
 
-         toggleLike() {
-            liked = !liked;
+        toggleLike() {
+            this.liked = !this.liked;
+            if (this.liked) {
+              this.emptyHeartImage = this.filledHeartImage;
+              
+            } else {
+              this.emptyHeartImage = "/images/heart.svg";
+              
+            }
         }
-     
     }
 }
 
