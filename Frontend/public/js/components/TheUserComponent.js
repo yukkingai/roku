@@ -3,12 +3,14 @@ export default {
     props: ['user'],
 
     template:  `
+    
     <div @click="NavToHome" class="avatar s-one-item">
         <div class="text-center">
             <img :src='"images/" + user.avatar' class="rounded-circle img-fluid" :style="{ width: 200 + 'px' }">
             <p>{{user.username}}</p>
         </div>
     </div>
+    
     `,
 
     methods: {

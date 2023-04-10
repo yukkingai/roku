@@ -72,6 +72,38 @@
             display: none;
         }
 
+        .video-summary h2 {
+            font-size: 2em !important;
+            margin-left: 15px !important;
+          }
+          
+          .video-summary p {
+            font-size: 1.2em !important;
+            margin-top: 30px !important;
+          }
+          
+          .video-summary button {
+            width: 60% !important;
+            margin-top: 30px;
+            padding: 15px 15px !important;
+            font-size: 1.2em !important;
+          }
+        
+        
+         .play img {
+            width: 80px !important;
+          }
+
+        .sum {
+            top: 15% !important;
+            left: 60% !important;
+            width: 35% !important;
+          }
+
+        .like {
+            left: 93% !important;
+        }
+
 
     }
 
@@ -124,9 +156,50 @@
     .logo {
         width: 20% !important;
     }
-    
 
+// MOVIE PAGE================================================
 
+  
+  .video-summary h2 {
+    font-size: 2em !important;
+    margin-left: 15px !important;
+  }
+  
+  .video-summary p {
+    font-size: 1.2em !important;
+    margin-top: 30px !important;
+  }
+  
+  .video-summary button {
+    width: 50% !important;
+    margin-top: 30px;
+    padding: 15px 15px !important;
+    font-size: 1.2em !important;
+  }
+
+  .frame img:hover ~ .caption { 
+    top: -470px !important;
+
+ } 
+
+ .play img {
+    width: 90px !important;
+  }
+
+  .sum {
+    top: 20% !important;
+    left: 60% !important;
+    width: 30% !important;
+  }
+
+  .movies-page .sum {
+    top: 25% !important;
+    left: 66% !important;
+  }
+
+  .like {
+    left: 93% !important;
+}
 
     
     }
