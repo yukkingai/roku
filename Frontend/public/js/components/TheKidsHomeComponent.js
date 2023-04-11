@@ -1,3 +1,5 @@
+import LightBox from "./TheLightbox.js";
+
 export default {
     name: 'TheKidsComponent',
 
@@ -15,7 +17,7 @@ export default {
                 <img @click="toggleLike" class="like big-like" :src="emptyHeartImage" v-if="!kidsPlayVideo">
                 <div class="video-summary" v-if="!kidsPlayVideo">
                     <div class="heading">
-                        <div class="play"><img src="/images/play-btn.png"></div>
+                        <div class="play" @click="loadLightBox"><img src="/images/play-btn.png"></div>
                         <h2>{{ movieTitle }}</h2>
                     </div>
                     <div class="sum">
@@ -147,6 +149,8 @@ export default {
         <div class="arrow right"></div>
         </div>
 
+        <thelightbox @closelightbox="this.showLB = false" v-if="showLB" :movie="lbData"></thelightbox>
+
     </div>
     `,
 
@@ -156,10 +160,10 @@ export default {
 
         
         const urls = [
-            // 'https://imdb-api.com/API/AdvancedSearch/k_60b722uh?release_date=1990-01-01,1999-01-01&certificates=us:G&languages=en',
-            // 'https://imdb-api.com/API/AdvancedSearch/k_60b722uh?release_date=1980-01-01,1989-01-01&certificates=us:G&languages=en',
-            // 'https://imdb-api.com/API/AdvancedSearch/k_60b722uh?release_date=1970-01-01,1979-01-01&certificates=us:G&languages=en',
-            // 'https://imdb-api.com/API/AdvancedSearch/k_60b722uh?release_date=1960-01-01,1969-01-01&certificates=us:G&languages=en',
+            'https://imdb-api.com/API/AdvancedSearch/k_60b722uh?release_date=1990-01-01,1999-01-01&certificates=us:G&languages=en',
+            'https://imdb-api.com/API/AdvancedSearch/k_60b722uh?release_date=1980-01-01,1989-01-01&certificates=us:G&languages=en',
+            'https://imdb-api.com/API/AdvancedSearch/k_60b722uh?release_date=1970-01-01,1979-01-01&certificates=us:G&languages=en',
+            'https://imdb-api.com/API/AdvancedSearch/k_60b722uh?release_date=1960-01-01,1969-01-01&certificates=us:G&languages=en',
             'https://imdb-api.com/API/AdvancedSearch/k_60b722uh?release_date=1950-01-01,1959-01-01&certificates=us:G&languages=en'
          ];
  
@@ -217,9 +221,16 @@ export default {
            movies80: [],
            movies70: [],
            movies60: [],
-           movies50: []
+           movies50: [],
+           movieData: {},
+           lbData: {},
+           showLB: false
          };
      },
+
+     components: {
+        thelightbox: LightBox 
+      },
  
      methods: {
         kidsPlayTrailer() {
@@ -227,16 +238,34 @@ export default {
            this.$refs.KidsVideoPlayer.play();
          },
 
-        toggleLike() {
+         toggleLike() {
             this.liked = !this.liked;
-            if (this.liked) {
-              this.emptyHeartImage = this.filledHeartImage;
-              
-            } else {
-              this.emptyHeartImage = "/images/heart.svg";
-              
+            const movies = document.querySelectorAll('.like');
+            movies.forEach((movie) => {
+              if (movie === event.target) {
+                if (this.liked) {
+                  movie.src = this.filledHeartImage;
+                } else {
+                  movie.src = this.emptyHeartImage;
+                }
+              }
+              });
+            },
+
+        scroll(direction) {
+            console.log(scroll);
+            const container = this.$refs.moviesContainer;
+            const scrollAmount = container.clientWidth;
+            console.log('scrollAmount', scrollAmount);
+            if (scrollAmount > 0) {
+              container.scrollLeft += scrollAmount * direction;
             }
-        }
+          },
+  
+        loadLightBox(movie) {
+            this.lbData = movie;
+            this.showLB = true;
+          },
     }
 }
 

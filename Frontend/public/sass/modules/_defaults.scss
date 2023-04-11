@@ -22,5 +22,22 @@ body {
     margin-left: 1.5em;
 }
 
-/* .log-in {} */
+*>::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+} 
+  
+*>::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+  }
+   
+*>::-webkit-scrollbar-thumb {
+    background: #011c37; 
+    border-radius: 10px;
+  }
+  
+*>::-webkit-scrollbar-thumb:hover {
+    background: #29aae1; 
+  }
 

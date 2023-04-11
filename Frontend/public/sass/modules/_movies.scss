@@ -51,7 +51,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 10;
+    z-index: 1;
   }
 
 .movie::before {
@@ -132,10 +132,12 @@ video {
 
   .play img {
     width: 40px;
+    z-index: 10;
   }
 
   .play {
     cursor: pointer;
+    z-index: 10;
   }
 
   
@@ -189,7 +191,7 @@ video {
     width: 3%;
     color: white;
     cursor: pointer;
-    
+    z-index: 10;
 }
 
 .big-like {
@@ -212,6 +214,7 @@ video {
 
 .frame img:hover ~ .caption { 
     top: -450px;
+    z-index: 10;
  }  
 
 .frame {
@@ -235,7 +238,7 @@ video {
     pointer-events: none;
     text-align: center;
     justify-content: center;
-    z-index:1;
+    z-index: 10;
     background-color: rgba(0,0,0,.6);
     display:block;
     top: 0px;
@@ -255,6 +258,9 @@ video {
     font-weight: 100;
 }
 
+.desc img {
+  z-index: 10;
+}
 
 .movies-container {
     display: flex;
@@ -266,13 +272,12 @@ video {
     white-space: nowrap; 
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: none; 
-    scrollbar-width: none;
 }
-  
+
 .movies-container::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
+
   
 
 
@@ -285,7 +290,7 @@ video {
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 50%;
     cursor: pointer;
-    z-index: 1;
+    z-index: 10;
   }
   
   .arrow.left {

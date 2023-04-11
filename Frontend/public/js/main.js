@@ -3,6 +3,7 @@ import LoginPage from "./components/TheLoginComponent.js";
 import AllUsersPage from "./components/TheAllUsersComponent.js";
 import DefaultHome from "./components/TheDefaultHomeComponent.js";
 import KidsHome from "./components/TheKidsHomeComponent.js";
+
 // import ErrorPage from './modules/ErrorPage.js';
 
 
@@ -55,11 +56,10 @@ const router = VueRouter.createRouter({
             authenticated: false, // visible in apperiated time
             // save the curent user so that we can access this data later
             currentUser:{}
-            
-            
-          
         }
     },
+
+
 
     methods: {
         setAuth() {
@@ -87,6 +87,8 @@ const router = VueRouter.createRouter({
             // save it here so that we can re-inject it into the user's home page
             this.currentUser = user;
         }
+
+        
         
     }
 

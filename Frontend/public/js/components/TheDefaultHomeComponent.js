@@ -1,3 +1,5 @@
+import LightBox from "./TheLightbox.js";
+
 export default {
     name: 'TheDefaultHomeComponent',
 
@@ -17,7 +19,7 @@ export default {
             <img @click="toggleLike" class="like big-like" :src="emptyHeartImage" v-if="!playVideo">
             <div class="video-summary" v-if="!playVideo">
               <div class="heading">
-                  <div @click="playMovie" class="play"><img src="/images/play-btn.png"></div>
+                  <div class="play" @click="loadLightBox"><img src="/images/play-btn.png"></div>
                   <h2>{{ movieTitle }}</h2>
               </div>
               <div class="sum">
@@ -42,7 +44,7 @@ export default {
                             <div class="caption">
                                 <h2>{{movie.title}}</h2><br><br>
                             <div class="desc">
-                                <img class="play" src="/images/play-btn.png">
+                                <img @click="loadLightBox" class="play" src="/images/play-btn.png">
                                 <img @click="toggleLike" class="like" :src="emptyHeartImage">
                                 <h3>PG-13<br>
                                     3 hours 14 minutes<br>
@@ -150,7 +152,7 @@ export default {
         <div class="arrow right"></div>
         </div>
 
-        
+      <thelightbox @closelightbox="this.showLB = false" v-if="showLB" :movie="lbData"></thelightbox>
 
     </div>
     `,
@@ -162,10 +164,10 @@ export default {
 
 
         const urls = [
-          //  'https://imdb-api.com/API/AdvancedSearch/k_60b722uh?release_date=1990-01-01,1999-01-01&languages=en',
-          //  'https://imdb-api.com/API/AdvancedSearch/k_60b722uh?release_date=1980-01-01,1989-01-01&languages=en',
-          //  'https://imdb-api.com/API/AdvancedSearch/k_60b722uh?release_date=1970-01-01,1979-01-01&languages=en',
-          //  'https://imdb-api.com/API/AdvancedSearch/k_60b722uh?release_date=1960-01-01,1969-01-01&languages=en',
+           'https://imdb-api.com/API/AdvancedSearch/k_60b722uh?release_date=1990-01-01,1999-01-01&languages=en',
+           'https://imdb-api.com/API/AdvancedSearch/k_60b722uh?release_date=1980-01-01,1989-01-01&languages=en',
+           'https://imdb-api.com/API/AdvancedSearch/k_60b722uh?release_date=1970-01-01,1979-01-01&languages=en',
+           'https://imdb-api.com/API/AdvancedSearch/k_60b722uh?release_date=1960-01-01,1969-01-01&languages=en',
            'https://imdb-api.com/API/AdvancedSearch/k_60b722uh?release_date=1950-01-01,1959-01-01&languages=en'
         ];
 
@@ -207,9 +209,7 @@ export default {
         .catch(error => console.log(error));
             
         })
-
-      
-            
+     
     },
 
     data() {
@@ -225,9 +225,17 @@ export default {
           movies80: [],
           movies70: [],
           movies60: [],
-          movies50: []
+          movies50: [],
+          movieData: {},
+          lbData: {},
+          showLB: false
         };
     },
+    
+    components: {
+      thelightbox: LightBox 
+    },
+
 
     methods: {
         playTrailer() {
@@ -257,8 +265,13 @@ export default {
           if (scrollAmount > 0) {
             container.scrollLeft += scrollAmount * direction;
           }
-        }
-        
+        },
+
+      loadLightBox(movie) {
+          this.lbData = movie;
+          this.showLB = true;
+        },
+ 
     }
 
 
